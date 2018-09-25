@@ -14,11 +14,11 @@ A compiler supporting C++11 is required.
 
 On GNU/Linux:  
 `g++ -pthread -std=c++11 -Ofast bbp-pi-parallel-cpu.cpp -o cpubbp -lm -lpthread`    
-For a little more info see [BUILDING-LINUX](https://github.com/JMadgwick/bbpi/BUILDING-LINUX).
+For a little more info see [BUILDING-LINUX](https://github.com/JMadgwick/bbpi/blob/master/BUILDING-LINUX).
 
 On Windows:   
 `cl /EHsc /O2 bbp-pi-parallel-cpu.cpp`   
-For Windows I would recommend using clang instead because the binaries it makes are much faster than cl. For more info and some runtime speed comparisons see [BUILDING-WIN10](https://github.com/JMadgwick/bbpi/BUILDING-WIN10).
+For Windows I would recommend using clang instead because the binaries it makes are much faster than cl. For more info and some runtime speed comparisons see [BUILDING-WIN10](https://github.com/JMadgwick/bbpi/blob/master/BUILDING-WIN10.
 
 If for some reason `std::thread::hardware_concurrency()` is not supported properly and the number of threads is not detected then you should be able to replace all references to it with an integer. You could also do this if you wanted to run fewer/more threads etc.
 
