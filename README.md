@@ -9,6 +9,9 @@ Take a look at my [blog](http://madgwick.xyz/bbp-pi-parallel-calculation.php) wh
 #### What does it do?
 By default it computes the 10 Millionth(10^7) hexadecimal digit of Pi (plus a few after that). And it doesn't take very long to do it, sub 10 seconds and fewer than 3 seconds with a good fast CPU. It can also run on some AMD GPUs, an R9 290 (from 2013) takes only ~1.5 secs to compute to the same accuracy.
 
+#### How can I run it?
+The easiest way is by downloading a release and running that. The other way is by compiling it yourself. This allows you to change the targeted hexadecimal place. You can also compile with `march=native` to reduce runtimes (by a little bit).
+
 ##### Build Instructions (CPU)
 A compiler supporting C++11 is required.
 

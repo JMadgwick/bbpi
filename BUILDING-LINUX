@@ -8,5 +8,8 @@ clang++ -march=native -Ofast bbp-pi-parallel-cpu.cpp -o cpubbp -lpthread
 
 ***Building for AMD GPU***
 
+#For native GPU (as detected by HCC)
 hcc `hcc-config --cxxflags --ldflags` -Ofast bbp-pi-parallel-gpu.cpp -o gpubbp
 
+#For all supported GPUs (this is what I have done for the release)
+hcc `hcc-config --cxxflags --ldflags` --amdgpu-target=gfx701 --amdgpu-target=gfx803 --amdgpu-target=gfx900 --amdgpu-target=gfx906 -Ofast bbp-pi-parallel-gpu.cpp -o gpubbp
