@@ -97,7 +97,7 @@ double bbpf16jsd(int j, int d)
     double term;
     int noOfThreads = static_cast<int>(std::thread::hardware_concurrency());
     std::thread *threadArray = new std::thread[noOfThreads];// Array with the number of threads avalible
-    double threadResults[noOfThreads];// For storing results from threads
+    double *threadResults = new double[noOfThreads];// For storing results from threads - note: 'new' is not needed by g++ but is needed for windows
     //Left Portion
     int k = 0;
     while (k < d)
