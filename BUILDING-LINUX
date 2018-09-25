@@ -1,0 +1,12 @@
+***Building for CPU***
+
+g++ -pthread -std=c++11 -march=native -Ofast bbp-pi-parallel-cpu.cpp -o cpubbp -lm -lpthread
+
+-OR-
+
+clang++ -march=native -Ofast bbp-pi-parallel-cpu.cpp -o cpubbp -lpthread
+
+***Building for AMD GPU***
+
+hcc `hcc-config --cxxflags --ldflags` -Ofast bbp-pi-parallel-gpu.cpp -o gpubbp
+

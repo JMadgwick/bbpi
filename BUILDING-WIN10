@@ -1,0 +1,21 @@
+----------Build Information----------
+[1] - Default Clang 7.0.0 Settings - This is the binary shipped with the Release
+[2] - Fastest Clang 7.0.0 Settings
+[3] - Default VS2017 (cl) Settings
+[4] - Fastest VS2017 (cl) Settings
+
+Time to run comparision: - on Xeon E3-1230 v2 (i7-3770) running Win 10
+[1] - 2.25 Seconds
+[2] - 1.92 Seconds --- Overall Fastest
+[3] - 3.19 Seconds
+[4] - 3.25 Seconds
+
+Commands to Build:
+CLANG++:
+[1]: clang++ -Ofast bbp-pi-parallel-cpu.cpp -o bbp-pi-parallel-cpu.exe
+[2]: clang++ -Ofast -march=native bbp-pi-parallel-cpu.cpp -o bbp-pi-parallel-cpu.exe
+-Ofast - Optimise Speed, -march=native - Use all supported CPU instructions
+CL:
+[3]: cl /EHsc /O2 /arch:AVX2 /fp:fast bbp-pi-parallel-cpu.cpp
+[4]: cl /EHsc /O2 bbp-pi-parallel-cpu.cpp
+/O2 - Optimise Speed, /arch:AVX2 - Use AVX2, /fp:fast - Use fast Floating Point
