@@ -1,7 +1,10 @@
 ## bbpi - Calculate Pi Hex Digits in Parallel
 **bbpi** is a simple program to calculate Pi Hex Digits in parallel, it uses the Bailey Borwein Plouffe formula.
 
-It is a multi-threaded program and currently it runs on CPUs and some AMD GPUs (via the HC API).
+It is a multi-threaded program and currently it runs on CPUs. It used to run on some AMD GPUs (via the HC API) but that has now been [**Deprecated**](https://github.com/RadeonOpenCompute/hcc#deprecation-notice).
+
+#### Update 
+The AMD HC GPU API has [**been Deprecated**](https://github.com/RadeonOpenCompute/hcc#deprecation-notice). It will not be supported in future ROCm releases and the HC program in this repo will no longer work with ROCm versions past _2.2_ ROCm _1.9_ has support for HC and is the last version supporting Hawaii GPUs (which I used to build this program) and so I would recmend using 1.9 if you want to use the HC GPU version.
 
 #### How does it work?  
 Take a look at my [blog](http://madgwick.xyz/bbp-pi-parallel-calculation.php) where there's further information and a link to the paper containing the algorithms I used.
@@ -26,7 +29,7 @@ For Windows I would recommend using clang instead because the binaries it makes 
 If for some reason `std::thread::hardware_concurrency()` is not supported properly and the number of threads is not detected then you should be able to replace all references to it with an integer. You could also do this if you wanted to run fewer/more threads etc.
 
 ##### Build Instructions (GPU)
-AMDs [ROCm](https://github.com/RadeonOpenCompute/ROCm) must be installed and working and the GPU used must be supported by HCC (gfx701,gfx803, gfx900,gfx906 at the time of writing). ROCm only works on GNU/Linux. There are no plans for it to support windows.   
+This uses AMDs [**now Deprecated**](https://github.com/RadeonOpenCompute/hcc#deprecation-notice) HC Language. [ROCm](https://github.com/RadeonOpenCompute/ROCm) **version 1.9**_ (and potentially some older but NOT newer versions)_ must be installed and the GPU used must be supported by HCC (gfx701,gfx803, gfx900,gfx906). 
 Build command: ``hcc `hcc-config --cxxflags --ldflags` -Ofast bbp-pi-parallel-gpu.cpp -o gpubbp``
 
 ##### The Files
@@ -37,5 +40,5 @@ This is the code for the HC GPU implementation.
 
 
 ###### The program in action
-Here is a video demonstrating an earlier build of the CPU and GPU implementation.
+Here is a video demonstrating an earlier build of the CPU and GPU implementation. CPU: Xeon E3-1230v2 GPU: AMD R9 290
 [![Alt text](https://img.youtube.com/vi/kC9i8Almlbg/0.jpg)](https://www.youtube.com/watch?v=kC9i8Almlbg)
